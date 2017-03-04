@@ -1,11 +1,14 @@
+body {
+}
+
 .container {
 	margin: 0 auto;
     width: 700px;
+    text-align: center;
 }
 
 .jumbotron {
-
-    text-align: center;
+	background:none;
 }
 
 #question {
@@ -14,4 +17,19 @@
 
 #timer {
 	float:right;
+}
+
+.answer {
+	background: none;
+	border: none;
+	clear:both;
+	display: block;
+	text-align: center;
+	margin: 20px auto;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+#question {
+	clear:both;
 }
