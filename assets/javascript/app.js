@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 console.log("Loadup");
 
-
+//Button that initializes the game
 $(".btn").click(function(){
 	console.log("buttonpress");
    	$("#timer").html(game.count);
@@ -10,7 +10,7 @@ $(".btn").click(function(){
 	$(".btn").remove();
 });
 
-
+//Answer buttons
 $(".answer").click(function(){
 	console.log("answerpress");
 	if (game.questionNum==4) {
@@ -19,7 +19,7 @@ $(".answer").click(function(){
 		stop();
 		$("#timer").remove();
 	} else{
-		setTimeout(game.counter, 4000);
+		setTimeout(game.count, 4000);
 	   	game.nextQuestion();
 	};
 });
@@ -28,26 +28,26 @@ $(".answer").click(function(){
   		//show next question
 
 
-
+//game object
 var game = {
 	//basic variables
-	correct: 0,
-	incorrect: 0,
-	questionNum: -1,
+	correct: 0,  //correct answers
+	incorrect: 0,	//incorrect answers
+	questionNum: -1,	//The current question
 
 
 
 	//timer
-	count: 30,
-	start: function() {nextQuestion = setInterval(game.counter, 1000);},
-  	stop: function() {clearInterval(intervalId);},
-  	reset: function() {
+	count: 30, //countdown timer
+	start: function() {nextQuestion = setInterval(game.counter, 1000);}, //start countdown
+  	stop: function() {clearInterval(intervalId);},			//stop countdown
+  	reset: function() {				//reset countdown
   		game.count = 30;
   		$("#timer").html(game.count)
 
   	},
 
-	counter: function() {
+	counter: function() {			//counts 
 		game.count--;
    		$("#timer").html(game.count);
 		console.log(game.count);
@@ -58,17 +58,12 @@ var game = {
 
 	//questions and answers for quiz
 	nextQuestion: function() {
-		if (this.questionNum<5 || this.counter < 1) {
 			this.questionNum ++;
 			$("#question").html(game.questions[this.questionNum].question);
 			$("#a1").html(game.questions[this.questionNum].a);
 			$("#a2").html(game.questions[this.questionNum].b);
 			$("#a3").html(game.questions[this.questionNum].c);
 			$("#a4").html(game.questions[this.questionNum].d);
-		} else {
-			//game over
-			console.log("game over")
-		};
 	},
 
 	questions:[
@@ -109,7 +104,7 @@ var game = {
 		},
 	],
 
-	answers: ["red", "dinosaur", "pink", "Smithy", "1996"]
+	answers: ["red", "dinosaur", "pink", "Smithy", "1996"],
 
 }; //end game object
 
