@@ -14,10 +14,7 @@ $(".btn").click(function(){
 $(".answer").click(function(){
 	console.log("answerpress");
 	if (game.questionNum==4) {
-		$("#question").html("Game Over!");
-		$(".answer").remove();
-		stop();
-		$("#timer").remove();
+		game.gameOver();
 	} else{
 		setTimeout(game.count, 4000);
 	   	game.nextQuestion();
@@ -66,6 +63,19 @@ var game = {
 			$("#a4").html(game.questions[this.questionNum].d);
 	},
 
+	gameOver: function () {
+		$("#question").html("Game Over!");
+		$(".answer").remove();
+		stop();
+		$("#timer").remove();
+	},
+
+//	rightWrong: function() {
+//		$.each(this.answers, function() {
+//		if ($("button").text()==)
+//		}
+//	},
+
 	questions:[
 		q1= {
 			question: "What color is Mario's hat?",
@@ -75,7 +85,7 @@ var game = {
 			d: "violet",
 		},
 		q2= {
-			question: "wtf is a Yoshi, anyway?",
+			question: "What kind of creature is Yoshi?",
 			a: "dinosaur",
 			b: "pokemon",
 			c: "amorphous blob",
